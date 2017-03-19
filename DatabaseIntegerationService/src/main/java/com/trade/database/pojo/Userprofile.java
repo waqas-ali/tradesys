@@ -1,6 +1,6 @@
 package com.trade.database.pojo;
 
-// Generated Mar 19, 2017 4:34:57 PM by Hibernate Tools 4.3.1
+// Generated Mar 19, 2017 5:33:42 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -31,7 +31,7 @@ public class Userprofile implements java.io.Serializable {
 	private String description;
 	private String picture;
 	private Date createTime;
-	private Set users = new HashSet(0);
+	private Set<User> users = new HashSet<>(0);
 
 	public Userprofile() {
 	}
@@ -42,7 +42,7 @@ public class Userprofile implements java.io.Serializable {
 
 	public Userprofile(int id, Location location, String firstName,
 			String lastName, String email, String description, String picture,
-			Date createTime, Set users) {
+			Date createTime, Set<User> users) {
 		this.id = id;
 		this.location = location;
 		this.firstName = firstName;
@@ -130,11 +130,11 @@ public class Userprofile implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "userprofile")
-	public Set getUsers() {
+	public Set<User> getUsers() {
 		return this.users;
 	}
 
-	public void setUsers(Set users) {
+	public void setUsers(Set<User> users) {
 		this.users = users;
 	}
 

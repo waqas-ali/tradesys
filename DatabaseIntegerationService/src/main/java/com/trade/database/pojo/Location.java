@@ -1,6 +1,6 @@
 package com.trade.database.pojo;
 
-// Generated Mar 19, 2017 4:34:57 PM by Hibernate Tools 4.3.1
+// Generated Mar 19, 2017 5:33:42 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -30,14 +30,14 @@ public class Location implements java.io.Serializable {
 	private String locationName;
 	private String createdby;
 	private Date createddate;
-	private Set locations = new HashSet(0);
-	private Set userprofiles = new HashSet(0);
+	private Set<Location> locations = new HashSet<>(0);
+	private Set<Userprofile> userprofiles = new HashSet<>(0);
 
 	public Location() {
 	}
 
 	public Location(Location location, String locationName, String createdby,
-			Date createddate, Set locations, Set userprofiles) {
+			Date createddate, Set<Location> locations, Set<Userprofile> userprofiles) {
 		this.location = location;
 		this.locationName = locationName;
 		this.createdby = createdby;
@@ -96,20 +96,20 @@ public class Location implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "location")
-	public Set getLocations() {
+	public Set<Location> getLocations() {
 		return this.locations;
 	}
 
-	public void setLocations(Set locations) {
+	public void setLocations(Set<Location> locations) {
 		this.locations = locations;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "location")
-	public Set getUserprofiles() {
+	public Set<Userprofile> getUserprofiles() {
 		return this.userprofiles;
 	}
 
-	public void setUserprofiles(Set userprofiles) {
+	public void setUserprofiles(Set<Userprofile> userprofiles) {
 		this.userprofiles = userprofiles;
 	}
 

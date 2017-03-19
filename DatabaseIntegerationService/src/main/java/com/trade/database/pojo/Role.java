@@ -1,6 +1,6 @@
 package com.trade.database.pojo;
 
-// Generated Mar 19, 2017 4:34:57 PM by Hibernate Tools 4.3.1
+// Generated Mar 19, 2017 5:33:42 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -27,7 +27,7 @@ public class Role implements java.io.Serializable {
 	private String rolename;
 	private Date createddate;
 	private String createdby;
-	private Set users = new HashSet(0);
+	private Set<User> users = new HashSet<>(0);
 
 	public Role() {
 	}
@@ -79,11 +79,11 @@ public class Role implements java.io.Serializable {
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "role")
-	public Set getUsers() {
+	public Set<User> getUsers() {
 		return this.users;
 	}
 
-	public void setUsers(Set users) {
+	public void setUsers(Set<User> users) {
 		this.users = users;
 	}
 

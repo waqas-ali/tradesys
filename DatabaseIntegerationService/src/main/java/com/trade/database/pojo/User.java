@@ -1,6 +1,6 @@
 package com.trade.database.pojo;
 
-// Generated Mar 19, 2017 4:34:57 PM by Hibernate Tools 4.3.1
+// Generated Mar 19, 2017 5:33:42 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import javax.persistence.Column;
