@@ -2,22 +2,19 @@ package com.trade.database;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 
-/**
- * Hello world!
- *
- */
 @SpringBootApplication
-public class App 
+public class App //extends SpringBootServletInitializer
 {
-    public static void main( String[] args )
-    {
+    public static void main( String[] args ) {
     	SpringApplication.run(App.class, args);
-//        Role role = new Role();
-//        role.setRolename("Admin");
-//        role.setCreatedby("1");
-//        role.setCreateddate(new Date());
-        //RoleHome home = new RoleHome();
-        //home.persist(role);
     }
+	/*
+	@Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(App.class);
+    }
+    */
 }
