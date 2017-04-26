@@ -1,7 +1,9 @@
 package com.trade.database.pojo;
 
-// Generated Apr 16, 2017 2:48:13 PM by Hibernate Tools 4.3.1
+// Generated Apr 24, 2017 6:58:03 PM by Hibernate Tools 4.3.1
 
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -10,6 +12,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -23,14 +26,17 @@ public class Pricesslot implements java.io.Serializable {
 	private Product product;
 	private Double price;
 	private Double minOrder;
+	private Set<Orderproduct> orderproducts = new HashSet<Orderproduct>(0);
 
 	public Pricesslot() {
 	}
 
-	public Pricesslot(Product product, Double price, Double minOrder) {
+	public Pricesslot(Product product, Double price, Double minOrder,
+			Set<Orderproduct> orderproducts) {
 		this.product = product;
 		this.price = price;
 		this.minOrder = minOrder;
+		this.orderproducts = orderproducts;
 	}
 
 	@Id
@@ -70,6 +76,15 @@ public class Pricesslot implements java.io.Serializable {
 
 	public void setMinOrder(Double minOrder) {
 		this.minOrder = minOrder;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "pricesslot")
+	public Set<Orderproduct> getOrderproducts() {
+		return this.orderproducts;
+	}
+
+	public void setOrderproducts(Set<Orderproduct> orderproducts) {
+		this.orderproducts = orderproducts;
 	}
 
 }

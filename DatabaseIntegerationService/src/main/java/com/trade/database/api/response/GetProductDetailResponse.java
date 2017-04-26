@@ -3,10 +3,10 @@ package com.trade.database.api.response;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GetProductResponse {
+public class GetProductDetailResponse {
 	private String token;
 	private String status;
-	private List<ProductModel> products = new ArrayList<ProductModel>();
+	private Product product;
 	
 	public String getToken() {
 		return token;
@@ -24,18 +24,20 @@ public class GetProductResponse {
 		this.status = status;
 	}
 
-	public List<ProductModel> getProducts() {
-		return products;
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+	
+	public Product getProduct() {
+		return product;
 	}
 
-	public class ProductModel {
+	public class Product {
 		private String name;
-		private int id;
 		private String description;
 		private List<Image> images = new ArrayList<Image>();
 		private List<Prices> prices = new ArrayList<Prices>();
 		private Producer producer;
-		
 		
 		public Producer getProducer() {
 			return producer;
@@ -53,24 +55,6 @@ public class GetProductResponse {
 			return images;
 		}
 
-		public class Producer {
-			private String userName;
-			private int userId;
-			public String getUserName() {
-				return userName;
-			}
-			public void setUserName(String userName) {
-				this.userName = userName;
-			}
-			public int getUserId() {
-				return userId;
-			}
-			public void setUserId(int userId) {
-				this.userId = userId;
-			}
-			
-			
-		}
 		public class Image {
 			private String url;
 
@@ -81,6 +65,24 @@ public class GetProductResponse {
 			public void setUrl(String url) {
 				this.url = url;
 			}
+		}
+		public class Producer {
+			private String name;
+			private int id;
+			public String getName() {
+				return name;
+			}
+			public void setName(String name) {
+				this.name = name;
+			}
+			public int getId() {
+				return id;
+			}
+			public void setId(int id) {
+				this.id = id;
+			}
+			
+			
 		}
 		public class Prices {
 			private double price;
@@ -104,12 +106,7 @@ public class GetProductResponse {
 		public void setName(String name) {
 			this.name = name;
 		}
-		public int getId() {
-			return id;
-		}
-		public void setId(int id) {
-			this.id = id;
-		}
+		
 		public String getDescription() {
 			return description;
 		}

@@ -1,6 +1,6 @@
 package com.trade.database.pojo;
 
-// Generated Apr 16, 2017 2:48:13 PM by Hibernate Tools 4.3.1
+// Generated Apr 24, 2017 6:58:03 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
 import java.util.HashSet;
@@ -28,25 +28,35 @@ public class Product implements java.io.Serializable {
 	private Integer id;
 	private Category category;
 	private Status status;
+	private User user;
 	private String prodName;
 	private String description;
-	private Integer userId;
 	private Date createTime;
+	private Double quantity;
+	private Set<Orderproduct> orderproducts = new HashSet<Orderproduct>(0);
 	private Set<Pricesslot> pricesslots = new HashSet<Pricesslot>(0);
+	private Set<Comments> commentses = new HashSet<Comments>(0);
+	private Set<Productpicture> productpictures = new HashSet<Productpicture>(0);
 
 	public Product() {
 	}
 
-	public Product(Category category, Status status, String prodName,
-			String description, Integer userId, Date createTime,
-			Set<Pricesslot> pricesslots) {
+	public Product(Category category, Status status, User user,
+			String prodName, String description, Date createTime,
+			Double quantity, Set<Orderproduct> orderproducts,
+			Set<Pricesslot> pricesslots, Set<Comments> commentses,
+			Set<Productpicture> productpictures) {
 		this.category = category;
 		this.status = status;
+		this.user = user;
 		this.prodName = prodName;
 		this.description = description;
-		this.userId = userId;
 		this.createTime = createTime;
+		this.quantity = quantity;
+		this.orderproducts = orderproducts;
 		this.pricesslots = pricesslots;
+		this.commentses = commentses;
+		this.productpictures = productpictures;
 	}
 
 	@Id
@@ -80,6 +90,16 @@ public class Product implements java.io.Serializable {
 		this.status = status;
 	}
 
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "user_id")
+	public User getUser() {
+		return this.user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 	@Column(name = "prod_name", length = 100)
 	public String getProdName() {
 		return this.prodName;
@@ -98,15 +118,6 @@ public class Product implements java.io.Serializable {
 		this.description = description;
 	}
 
-	@Column(name = "user_id")
-	public Integer getUserId() {
-		return this.userId;
-	}
-
-	public void setUserId(Integer userId) {
-		this.userId = userId;
-	}
-
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "create_time", length = 19)
 	public Date getCreateTime() {
@@ -117,6 +128,24 @@ public class Product implements java.io.Serializable {
 		this.createTime = createTime;
 	}
 
+	@Column(name = "quantity", precision = 22, scale = 0)
+	public Double getQuantity() {
+		return this.quantity;
+	}
+
+	public void setQuantity(Double quantity) {
+		this.quantity = quantity;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
+	public Set<Orderproduct> getOrderproducts() {
+		return this.orderproducts;
+	}
+
+	public void setOrderproducts(Set<Orderproduct> orderproducts) {
+		this.orderproducts = orderproducts;
+	}
+
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
 	public Set<Pricesslot> getPricesslots() {
 		return this.pricesslots;
@@ -124,6 +153,24 @@ public class Product implements java.io.Serializable {
 
 	public void setPricesslots(Set<Pricesslot> pricesslots) {
 		this.pricesslots = pricesslots;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
+	public Set<Comments> getCommentses() {
+		return this.commentses;
+	}
+
+	public void setCommentses(Set<Comments> commentses) {
+		this.commentses = commentses;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
+	public Set<Productpicture> getProductpictures() {
+		return this.productpictures;
+	}
+
+	public void setProductpictures(Set<Productpicture> productpictures) {
+		this.productpictures = productpictures;
 	}
 
 }

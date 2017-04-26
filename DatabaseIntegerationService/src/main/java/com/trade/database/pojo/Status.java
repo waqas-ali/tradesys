@@ -1,6 +1,6 @@
 package com.trade.database.pojo;
 
-// Generated Apr 16, 2017 2:48:13 PM by Hibernate Tools 4.3.1
+// Generated Apr 24, 2017 6:58:03 PM by Hibernate Tools 4.3.1
 
 import java.util.HashSet;
 import java.util.Set;
@@ -23,14 +23,18 @@ public class Status implements java.io.Serializable {
 	private Integer id;
 	private String statusName;
 	private String description;
+	private Set<Orderproductstatus> orderproductstatuses = new HashSet<Orderproductstatus>(
+			0);
 	private Set<Product> products = new HashSet<Product>(0);
 
 	public Status() {
 	}
 
-	public Status(String statusName, String description, Set<Product> products) {
+	public Status(String statusName, String description,
+			Set<Orderproductstatus> orderproductstatuses, Set<Product> products) {
 		this.statusName = statusName;
 		this.description = description;
+		this.orderproductstatuses = orderproductstatuses;
 		this.products = products;
 	}
 
@@ -61,6 +65,16 @@ public class Status implements java.io.Serializable {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "status")
+	public Set<Orderproductstatus> getOrderproductstatuses() {
+		return this.orderproductstatuses;
+	}
+
+	public void setOrderproductstatuses(
+			Set<Orderproductstatus> orderproductstatuses) {
+		this.orderproductstatuses = orderproductstatuses;
 	}
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "status")

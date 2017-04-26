@@ -1,6 +1,6 @@
 package com.trade.database.api.response;
 
-public class AddResponse {
+public class AddUpdateResponse {
 	private String token;
 	private String status;
 	private String message;
