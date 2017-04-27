@@ -12,7 +12,7 @@ public class UserEntityMapper {
 		
 		Userprofile profile = new Userprofile();
 		profile.setAddress(model.getAddress());
-		profile.setDescription(model.getDesciption());
+		profile.setDescription(model.getDescription());
 		profile.setEmail(model.getEmail());
 		profile.setFirstName(model.getFirstName());
 		profile.setLastName(model.getLastName());
@@ -25,6 +25,8 @@ public class UserEntityMapper {
 		user.setUserName(model.getUserName());
 		user.setPassword(model.getPassword());
 		user.setRole(role);
+		profile.getUsers().add(user);
+		role.getUsers().add(user);
 		
 		return user;
 	}
@@ -39,7 +41,7 @@ public class UserEntityMapper {
 		model.setPhone(profile.getPhone());
 		model.setPicture(profile.getPicture());
 		model.setAddress(profile.getAddress());
-		model.setDesciption(profile.getDescription());
+		model.setDescription(profile.getDescription());
 		dto.setUser(model);
 		return dto;
 		

@@ -47,7 +47,7 @@ public class AddUpdateUser {
 		private String picture;
 		private String phone;
 		private String address;
-		private String desciption;
+		private String description;
 		private String password;
 		private String userName;
 		private UserRole role;
@@ -135,11 +135,11 @@ public class AddUpdateUser {
 		public void setAddress(String address) {
 			this.address = address;
 		}
-		public String getDesciption() {
-			return desciption;
+		public String getDescription() {
+			return description;
 		}
-		public void setDesciption(String desciption) {
-			this.desciption = desciption;
+		public void setDescription(String description) {
+			this.description = description;
 		}
 	}
 }

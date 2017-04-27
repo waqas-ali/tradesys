@@ -2,12 +2,16 @@ package com.trade.database.pojo;
 
 // Generated Apr 24, 2017 6:58:03 PM by Hibernate Tools 4.3.1
 
+import static javax.persistence.GenerationType.IDENTITY;
+
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -23,7 +27,7 @@ import javax.persistence.TemporalType;
 @Table(name = "userprofile", catalog = "tradesys")
 public class Userprofile implements java.io.Serializable {
 
-	private int id;
+	private Integer id;
 	private Location location;
 	private String firstName;
 	private String lastName;
@@ -36,10 +40,6 @@ public class Userprofile implements java.io.Serializable {
 	private Set<User> users = new HashSet<User>(0);
 
 	public Userprofile() {
-	}
-
-	public Userprofile(int id) {
-		this.id = id;
 	}
 
 	public Userprofile(int id, Location location, String firstName,
@@ -59,12 +59,13 @@ public class Userprofile implements java.io.Serializable {
 	}
 
 	@Id
+	@GeneratedValue(strategy = IDENTITY)
 	@Column(name = "id", unique = true, nullable = false)
-	public int getId() {
+	public Integer getId() {
 		return this.id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

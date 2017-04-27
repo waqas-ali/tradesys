@@ -5,19 +5,19 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.trade.database.api.request.AddUpdateOrder;
-import com.trade.database.api.request.AddUpdateUser;
 import com.trade.database.api.response.AddUpdateResponse;
 import com.trade.database.api.response.GetOrderDetailResponse;
 import com.trade.database.api.response.GetOrderResponse;
-import com.trade.database.api.response.UserDetail;
 import com.trade.database.dao.OrderDAO;
 
+@CrossOrigin(maxAge = 3600)
 @RestController
 @RequestMapping("/order")
 public class OrderService {

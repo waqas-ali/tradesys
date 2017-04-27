@@ -7,6 +7,7 @@ import io.swagger.annotations.ApiResponses;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.trade.database.dao.LocationDAO;
 import com.trade.database.pojo.Location;
 
+@CrossOrigin(maxAge = 3600)
 @RestController
 @RequestMapping("/location")
 public class LocationService {

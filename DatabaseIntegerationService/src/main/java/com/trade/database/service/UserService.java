@@ -5,18 +5,21 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.trade.database.api.request.AddUpdateUser;
+import com.trade.database.api.request.LoginRequest;
 import com.trade.database.api.response.AddUpdateResponse;
 import com.trade.database.api.response.UserDetail;
 import com.trade.database.dao.UserDAO;
 import com.trade.database.entitymapper.UserEntityMapper;
 import com.trade.database.pojo.User;
 
+@CrossOrigin(maxAge = 3600)
 @RestController
 @RequestMapping("/user")
 public class UserService {
@@ -28,8 +31,8 @@ public class UserService {
     @ApiResponses(value = {
             @ApiResponse(code = 400, message = "Fields are with validation errors"),
             @ApiResponse(code = 201, message = "") })
-	public UserDetail login(@RequestBody String email, @RequestBody String password) {
-		User user = dao.getByEmail(email);
+	public UserDetail login(@RequestBody LoginRequest request) {
+		User user = dao.getByUsername(request.getEmail());
 		UserEntityMapper mapper = new UserEntityMapper();
 		UserDetail response = mapper.convertFromEntity(user);
 		response.setToken(""+user.getId());

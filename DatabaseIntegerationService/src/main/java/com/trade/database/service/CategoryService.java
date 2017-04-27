@@ -4,13 +4,13 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,6 +23,7 @@ import com.trade.database.dao.ProductDAO;
 import com.trade.database.pojo.Pricesslot;
 import com.trade.database.pojo.Product;
 
+@CrossOrigin(maxAge = 3600)
 @RestController
 @RequestMapping("/category")
 public class CategoryService {

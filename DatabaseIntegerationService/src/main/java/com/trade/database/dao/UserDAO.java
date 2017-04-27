@@ -59,11 +59,11 @@ public class UserDAO {
 	}
 
 	/**
-	 * Return the User having the passed email.
+	 * Return the User having the passed user name.
 	 */
-	public User getByEmail(String email) {
-		TypedQuery<User>  query =entityManager.createQuery("from Product where email = :email",User.class);
-		query.setParameter("email", email);
+	public User getByUsername(String userName) {
+		TypedQuery<User>  query =entityManager.createQuery("from User where user_name = :user_name",User.class);
+		query.setParameter("user_name", userName);
 		User product = query.getSingleResult();
 		return product;
 	}
