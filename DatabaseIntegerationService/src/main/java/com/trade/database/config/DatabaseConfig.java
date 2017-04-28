@@ -27,11 +27,12 @@ public class DatabaseConfig {
   @Bean
   public DataSource dataSource() {
     DriverManagerDataSource dataSource = new DriverManagerDataSource();
-    System.out.println(env.getProperty("db.driver") +" " +env.getProperty("db.url"));
-    dataSource.setDriverClassName(env.getProperty("db.driver"));
-    dataSource.setUrl(env.getProperty("db.url"));
-    dataSource.setUsername(env.getProperty("db.username"));
-    dataSource.setPassword(env.getProperty("db.password"));
+    //System.out.println(env.getProperty("db.driver") +" " +env.getProperty("db.url"));
+    //dataSource.setDriverClassName(env.getProperty("db.driver"));
+    //dataSource.setUrl(env.getProperty("db.url"));
+    //dataSource.setUsername(env.getProperty("db.username"));
+    //dataSource.setPassword(env.getProperty("db.password"));
+	dataSource.setUrl(env.getProperty("db.cloud"));
     return dataSource;
   }
 
