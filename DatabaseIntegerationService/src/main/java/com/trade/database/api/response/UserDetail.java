@@ -45,7 +45,14 @@ public class UserDetail {
 		private String phone;
 		private String address;
 		private String description;
+		private int roleId;
 		
+		public int getRoleId() {
+			return roleId;
+		}
+		public void setRoleId(int roleId) {
+			this.roleId = roleId;
+		}
 		public int getId() {
 			return id;
 		}

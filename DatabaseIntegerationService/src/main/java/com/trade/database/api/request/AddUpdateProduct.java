@@ -7,11 +7,20 @@ public class AddUpdateProduct {
 	private String name;
 	private String description;
 	private int id;
+	private int categoryId;
 	private List<Image> images;
 	private List<Prices> prices;
 	private double quantity;
 	
 	
+	public int getCategoryId() {
+		return categoryId;
+	}
+
+	public void setCategoryId(int categoryId) {
+		this.categoryId = categoryId;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -36,7 +45,7 @@ public class AddUpdateProduct {
 		this.prices = prices;
 	}
 
-	public class Image {
+	public static class Image {
 		private String url;
 
 		public String getUrl() {
@@ -49,7 +58,7 @@ public class AddUpdateProduct {
 		
 	}
 
-	public class Prices {
+	public static class Prices {
 		private double price;
 		private double minOrder;
 		public double getPrice() {

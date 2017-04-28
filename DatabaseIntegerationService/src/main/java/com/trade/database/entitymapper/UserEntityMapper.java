@@ -42,6 +42,7 @@ public class UserEntityMapper {
 		model.setPicture(profile.getPicture());
 		model.setAddress(profile.getAddress());
 		model.setDescription(profile.getDescription());
+		model.setRoleId(user.getRole().getId());
 		dto.setUser(model);
 		return dto;
 		

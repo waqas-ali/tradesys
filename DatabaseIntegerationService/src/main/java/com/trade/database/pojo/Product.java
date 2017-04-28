@@ -5,11 +5,15 @@ package com.trade.database.pojo;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+
 import static javax.persistence.GenerationType.IDENTITY;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -146,7 +150,7 @@ public class Product implements java.io.Serializable {
 		this.orderproducts = orderproducts;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "product",cascade=CascadeType.ALL)
 	public Set<Pricesslot> getPricesslots() {
 		return this.pricesslots;
 	}
@@ -164,7 +168,7 @@ public class Product implements java.io.Serializable {
 		this.commentses = commentses;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "product",cascade=CascadeType.ALL)
 	public Set<Productpicture> getProductpictures() {
 		return this.productpictures;
 	}

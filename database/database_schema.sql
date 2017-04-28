@@ -29,7 +29,7 @@ CREATE TABLE `category` (
   KEY `FK2y94svpmqttx80mshyny85wqr` (`parent_id`),
   CONSTRAINT `FK2y94svpmqttx80mshyny85wqr` FOREIGN KEY (`parent_id`) REFERENCES `category` (`id`),
   CONSTRAINT `FK_category_id` FOREIGN KEY (`parent_id`) REFERENCES `category` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 /*Table structure for table `comments` */
 
@@ -136,8 +136,8 @@ CREATE TABLE `pricesslot` (
   PRIMARY KEY (`id`),
   KEY `FKl7jimvgvygs3hjea2i16dosoi` (`prod_id`),
   CONSTRAINT `FKl7jimvgvygs3hjea2i16dosoi` FOREIGN KEY (`prod_id`) REFERENCES `product` (`id`),
-  CONSTRAINT `FK_pricesslot_id` FOREIGN KEY (`prod_id`) REFERENCES `product` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  CONSTRAINT `FK_pricesslot_id` FOREIGN KEY (`prod_id`) REFERENCES `product` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 /*Table structure for table `product` */
 
@@ -159,10 +159,10 @@ CREATE TABLE `product` (
   CONSTRAINT `FK979liw4xk18ncpl87u4tygx2u` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`),
   CONSTRAINT `FK1mtsbur82frn64de7balymq9s` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`),
   CONSTRAINT `FKrjx2c79b1cc0jykhf57lfqx0t` FOREIGN KEY (`status`) REFERENCES `status` (`id`),
-  CONSTRAINT `FK_product` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`),
-  CONSTRAINT `FK_prod_cat_id` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`),
-  CONSTRAINT `FK_prod_status_id` FOREIGN KEY (`status`) REFERENCES `status` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  CONSTRAINT `FK_product` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_prod_cat_id` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `FK_prod_status_id` FOREIGN KEY (`status`) REFERENCES `status` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 /*Table structure for table `productpicture` */
 
@@ -176,8 +176,8 @@ CREATE TABLE `productpicture` (
   PRIMARY KEY (`id`),
   KEY `FKlxl68kwbf1qe8d8d5l85rp6pn` (`prod_id`),
   CONSTRAINT `FKlxl68kwbf1qe8d8d5l85rp6pn` FOREIGN KEY (`prod_id`) REFERENCES `product` (`id`),
-  CONSTRAINT `FK_prodpicture_prod` FOREIGN KEY (`prod_id`) REFERENCES `product` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  CONSTRAINT `FK_prodpicture_prod` FOREIGN KEY (`prod_id`) REFERENCES `product` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 /*Table structure for table `role` */
 
@@ -200,7 +200,7 @@ CREATE TABLE `status` (
   `status_name` varchar(50) DEFAULT NULL,
   `description` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 /*Table structure for table `user` */
 
@@ -228,7 +228,7 @@ CREATE TABLE `user` (
   CONSTRAINT `FKn82ha3ccdebhokx3a8fgdqeyy` FOREIGN KEY (`role_id`) REFERENCES `role` (`id`),
   CONSTRAINT `user_profile_id_fk` FOREIGN KEY (`profile_id`) REFERENCES `userprofile` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `user_role_id_fk` FOREIGN KEY (`role_id`) REFERENCES `role` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 /*Table structure for table `userprofile` */
 
@@ -249,7 +249,7 @@ CREATE TABLE `userprofile` (
   KEY `profile_location_id_fk_idx` (`location_id`),
   CONSTRAINT `FK4flp605mehmoi1v2idncxdemn` FOREIGN KEY (`location_id`) REFERENCES `location` (`id`),
   CONSTRAINT `profile_location_id_fk` FOREIGN KEY (`location_id`) REFERENCES `location` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

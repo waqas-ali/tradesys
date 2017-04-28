@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.trade.database.pojo.Product;
-import com.trade.database.pojo.User;
 
 /**
  * This class is used to access data for the Product entity. Repository
@@ -69,11 +68,25 @@ public class ProductDAO {
 	/**
 	 * Return the Product having the passed email.
 	 */
-	public Product getByEmail(String email) {
-		TypedQuery<Product>  query =entityManager.createQuery("from Product where email = :email",Product.class);
-		query.setParameter("email", email);
-		Product product = query.getSingleResult();
-		return product;
+	public List<Product> getByCategory(int categoryId) {
+		TypedQuery<Product>  query =entityManager.createQuery("from Product where category_id = :category",Product.class);
+		query.setParameter("category", categoryId);
+		List<Product> list = query.getResultList();
+		return list;
+	}
+	
+	public List<Product> getByProducer(int UserId) {
+		TypedQuery<Product>  query =entityManager.createQuery("from Product where user_id = :userId",Product.class);
+		query.setParameter("userId", UserId);
+		List<Product> list = query.getResultList();
+		return list;
+	}
+	
+	public List<Product> getByCriteria(String keyword) {
+		TypedQuery<Product>  query =entityManager.createQuery("from Product where lower(prod_name) like :keyword",Product.class);
+		query.setParameter("keyword", "%"+keyword.toLowerCase()+"%");
+		List<Product> list = query.getResultList();
+		return list;
 	}
 
 	/**
